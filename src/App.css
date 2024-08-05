@@ -1,0 +1,329 @@
+.App {
+  text-align: center;
+  background-color:rgb(65, 158, 65);
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('./Media/vacas_cruza_pastoreando.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-width: 340px;
+}
+
+.App-header {
+  background-color: black;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 1.25vh;
+}
+
+body {
+  min-width: 340px;
+  color:black;
+  background-color: rgb(172, 105, 105);
+}
+
+.seccion, .grafico {
+  margin: 10px;
+  padding: 5px;
+  border: solid 2px black;
+  background-color: rgba(255,255,255,0.85);
+}
+
+.seccion2 {
+  margin: 10px;
+  padding: 5px;
+  border: solid 3px red;
+  background-color: rgba(241, 221, 221, 0.75);
+}
+
+.grafico {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: small;
+  background-color: rgba(255,255,255,0.5);
+  padding: 1.5px;
+  border-radius: 10px;
+  margin: 1.5px;
+}
+
+.mostrar {
+  border: none;
+  font-weight: 600;
+  background-color: rgba(255,255,255,0.5);
+  justify-self: center;
+  margin-left: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mostrar:hover, .button:hover {
+  background-color: lightgray;
+}
+
+form, .monedas, .check, .check2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.check {
+  width: 100px;
+  border: solid 1px gray;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.check2 {
+  margin: 0 auto;
+  max-width: 200px;
+  border: solid 1px gray;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.seccionVentaAnimales {
+  width: 70px;
+  background-color: rgba(255,255,255,0.3);
+  padding: 1px;
+  font-size: smaller;
+  text-align: center;
+}
+
+.datosInputVenta {
+  width: 70px;
+  height: 22.5px;
+}
+
+#monedas-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+.seccionFormulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.seccionOGD {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 315px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.seccionCompuesta, .checklist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 640px;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 2px;
+  margin: auto;
+}
+
+.ventasAnimales {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+input {
+  text-align: center;
+  width: 315px;
+  margin-top: 5px;
+  font-size: medium;
+}
+
+.checkbox {
+  width: 15px;
+}
+
+select {
+  text-align: center;
+  width: 230px;
+  margin: 5px;
+  font-size: smaller;
+}
+
+input::placeholder {
+  font-size:small;
+}
+
+.resultados {
+  background-color: rgba(255,255,255,0.6);
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#MiLecheria {
+  max-height: 65px;
+  max-width: 85vw;
+  margin-top:15px;
+  margin-bottom: 15px;
+  width: 250px;
+}
+
+.subseccion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items:baseline;
+}
+
+.button, .comenzar {
+  margin: 10px;
+}
+
+.comenzar {
+  background-color: rgb(248, 178, 178);
+}
+
+.comenzar:hover {
+  background-color: rgb(249, 121, 121);
+}
+
+#instrucciones {
+  text-align: center;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+}
+
+.logo {
+  max-width: 150px;
+  max-height: 85px;
+  margin: 5px;
+}
+
+footer {
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: black solid 20px;
+  border-bottom:black solid 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  line-height: 0.65;
+  font-size: smaller;
+}
+
+.containerLogos, #leyenda {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.desarrolladores, .logos {
+  width: 250px;
+  text-align: center;  
+}
+
+#leyenda {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.contenido-instrucciones {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+  background-color: rgba(255,255,255,0.25);
+  padding: 5px;
+}
+
+table, .titulo2 {
+  text-align: left;
+  max-width: 850px;
+  margin: auto;
+}
+
+.titulo3 {
+  border: solid 1px lightgray;
+  border-radius: 10px;
+  width: 305px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.titulo4 {
+  max-width: 640px;
+  margin: auto;
+  margin-bottom: 5px;
+  background-color: rgba(199, 199, 199, 0.6);
+  border-radius: 10px;
+}
+
+.tooltip {
+  text-align: left;
+}
+
+.cambioMoneda {
+  height: 60px;
+  width: 60px;
+  background-color: rgba(239, 240, 239, 0.9);
+  border: solid 4px rgb(57, 46, 177);
+  border-radius: 10px;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+
+#fijarMO, #fijarOGD, #fijarGE {
+  width: 60px;
+  font-size: small;
+  background-color: rgba(239, 240, 239, 0.9);
+  border: solid 4px rgb(46, 177, 46);
+  border-radius: 10px;
+  position: fixed;
+  right: 5px;
+}
+
+#fijarMO {
+  top: 67px;
+}
+
+#fijarOGD {
+  top: 135px;
+}
+
+#fijarGE {
+  top: 203px;
+}
