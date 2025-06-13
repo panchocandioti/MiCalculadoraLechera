@@ -25,6 +25,7 @@ function IngresoDatos() {
     const [vacasSecas, setVacasSecas] = useState('');
     const [superficieVT, setSuperficieVT] = useState('');
     const [lecheVendida, setLecheVendida] = useState('');
+    const [lecheNoComercial, setLecheNoComercial] = useState('');
     const [vacasMuertas, setVacasMuertas] = useState('');
 
     const [ventaVacas, setVentaVacas] = useState(false);
@@ -110,10 +111,13 @@ function IngresoDatos() {
 
     //Cálculos sección 1
     const lecheVendidaDia = (parseFloat(lecheVendida) / 365).toFixed(0);
+    const lecheTotal = (parseFloat(lecheVendida) + parseFloat(lecheNoComercial));
+    const lecheNoComercialDia = (parseFloat(lecheNoComercial) / 365).toFixed(0);
+    const lecheTotalDia = (parseFloat(lecheTotal) / 365).toFixed(0);
     const cargaAnimal = ((parseFloat(vacasOrdeno) + parseFloat(vacasSecas)) / parseFloat(superficieVT)).toFixed(2);
-    const produccionIndividual = ((parseFloat(lecheVendida) / 365) / parseFloat(vacasOrdeno)).toFixed(1);
+    const produccionIndividual = ((parseFloat(lecheTotal) / 365) / parseFloat(vacasOrdeno)).toFixed(1);
     const relacionVOVT = ((parseFloat(vacasOrdeno) / (parseFloat(vacasOrdeno) + parseFloat(vacasSecas)) * 100)).toFixed(1);
-    const productividad = (parseFloat(lecheVendida) / parseFloat(superficieVT)).toFixed(0);
+    const productividad = (parseFloat(lecheTotal) / parseFloat(superficieVT)).toFixed(0);
     const kilosVacas = ((parseFloat(vacasCab) * parseFloat(vacasPeso)).toFixed(0));
     const kilosToros = ((parseFloat(torosCab) * parseFloat(torosPeso)).toFixed(0));
     const kilosToritos = ((parseFloat(toritosCab) * parseFloat(toritosPeso)).toFixed(0));
@@ -230,7 +234,7 @@ function IngresoDatos() {
     //Validación 1
     if (!formatoEnteroPositivo.test(vacasOrdeno) || !formatoEnteroPositivo.test(vacasSecas) ||
         !formatoFloatPositivo.test(superficieVT) || !formatoEnteroPositivo.test(lecheVendida) ||
-        !formatoEntero.test(kilosCarne) || !formatoEntero.test(vacasMuertas)) {
+        !formatoEntero.test(lecheNoComercial) || !formatoEntero.test(kilosCarne) || !formatoEntero.test(vacasMuertas)) {
         validacion1 = false;
     }
 
@@ -310,6 +314,10 @@ function IngresoDatos() {
 
     const handleLecheVendidaChange = (e) => {
         setLecheVendida(e.target.value);
+    };
+
+    const handleLecheNoComercialChange = (e) => {
+        setLecheNoComercial(e.target.value);
     };
 
     const handleVacasMuertasChange = (e) => {
@@ -777,6 +785,21 @@ function IngresoDatos() {
                         </div>)}
 
                     </div>
+                    <div className='seccionFormulario'>
+                        <label id="lecheNoComercial">Leche no comercial (litros/año): </label>
+                        <input type='number' value={lecheNoComercial} onChange={handleLecheNoComercialChange} placeholder='Ingresar cantidad de litros/año' />
+                        <Tooltip anchorSelect="#lecheNoComercial" place="top" className='tooltip'>
+                            <p><b>Leche no comercial:</b></p>
+                            <p>Leche producida no comercializada</p>
+                            <p>Incluye leche de descarte, para crianza de</p>
+                            <p>terneros, para consumo propio y cualquier</p>
+                            <p>otro destino interno.</p>
+                            <p>- No ingresar decimales -</p>
+                        </Tooltip>
+                        {lecheNoComercial > 0 && (<div>
+                            <div className='opciones'><p>{new Intl.NumberFormat().format(lecheNoComercialDia)} litros diarios</p></div>
+                        </div>)}
+                    </div>
                     <label id="categoriasVenta">Venta anual de carne (seleccione categorías) </label>
                     <Tooltip anchorSelect="#categoriasVenta" place="top" className='tooltip'>
                         <p><b>Categorías de venta:</b></p>
@@ -952,7 +975,7 @@ function IngresoDatos() {
                 {mostrarSeccion2 && (<div>
                     <IndicadoresFisicos validacion1={validacion1} cargaAnimal={cargaAnimal}
                         produccionIndividual={produccionIndividual} relacionVOVT={relacionVOVT}
-                        productividad={productividad} lecheVendidaDia={lecheVendidaDia}
+                        productividad={productividad} lecheVendidaDia={lecheVendidaDia} lecheTotalDia={lecheTotalDia}
                         kilosCarne={kilosCarne} productividadCarne={productividadCarne} rechazoVacas={rechazoVacas}
                         mortandadVacas={mortandadVacas} cabezasVendidas={cabezasVendidas} />
                 </div>)}
@@ -1527,7 +1550,8 @@ function IngresoDatos() {
                 <hr></hr>
                 {validacion8 && (<div className='resultados'>
                     <PDFDownloadLink document={<ReportePDF nombreCaso={nombreCaso} vacasOrdeno={vacasOrdeno} vacasSecas={vacasSecas}
-                        superficieVT={superficieVT} lecheVendida={lecheVendida} codigoMoneda={codigoMoneda} ingresoLeche={ingresoLeche}
+                        superficieVT={superficieVT} lecheVendida={lecheVendida} lecheTotal={lecheTotal} lecheTotalDia={lecheTotalDia}
+                        lecheNoComercial={lecheNoComercial} lecheNoComercialDia={lecheNoComercialDia} codigoMoneda={codigoMoneda} ingresoLeche={ingresoLeche}
                         ingresoCarne={ingresoCarne} ingresoVq={ingresoVq} ingresoBruto2={ingresoBruto2} gastoManoDeObra={gastoManoDeObra} gastoReposicion={gastoReposicion}
                         porcentajeReposicion={porcentajeReposicion} gastoAlimentacion={gastoAlimentacion} gastoSuministro={gastoSuministro}
                         gastosVeterinaria={gastosVeterinaria} gastosRodeo={gastosRodeo} alquilerVacas={alquilerVacas} gastosTambo={gastosTambo}

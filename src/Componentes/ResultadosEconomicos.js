@@ -11,7 +11,7 @@ function ResultadosEconomicos(props) {
             {props.validacion8 && (<div>
                 <div className='resultados'>
                     <h4>COSTO DE PRODUCCIÓN (corto plazo)</h4>
-                    <h6>Análisis por litro</h6>
+                    <h6>Análisis por litro comercializado</h6>
                     <div className='table-responsive'>
                         <table className="table table-hover">
                             <tbody>
@@ -61,7 +61,7 @@ function ResultadosEconomicos(props) {
                         </table>
                     </div>
                     <h4>RESULTADO OPERATIVO</h4>
-                    <h6>Análisis por litro</h6>
+                    <h6>Análisis por litro comercializado</h6>
                     <div className='table-responsive'>
                         <table className="table table-hover">
                             <tbody>

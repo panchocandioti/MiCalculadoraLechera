@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
     tableCell: {
         flex: 1,
         border: '1px solid #000',
-        padding: 3,
+        padding: 2.5,
         textAlign: 'left',
     },
     tableCell2: {
         flex: 1,
         border: '1px solid #000',
-        padding: 3,
+        padding: 2.5,
         textAlign: 'left',
         fontWeight: 'bold',
         backgroundColor: 'lightgray',
@@ -148,6 +148,11 @@ function ReportePDF(props) {
     const [bajaVacasP, setBajaVacasP] = useState(props.bajaVacasP);
     const [costoVaquillona, setCostoVaquillona] = useState(props.costoVaquillona);
 
+    const lecheTotal = props.lecheTotal;
+    const lecheTotalDia = props.lecheTotalDia;
+    const lecheNoComercial = props.lecheNoComercial;
+    const lecheNoComercialDia = props.lecheNoComercialDia;
+
     const fecha = new Date();
     const dia = fecha.getDate();
     const mes = fecha.getMonth() + 1;
@@ -156,9 +161,9 @@ function ReportePDF(props) {
 
     let lecheVendidaDia = (parseFloat(lecheVendida) / 365).toFixed(0);
     let cargaAnimal = ((parseFloat(vacasOrdeno) + parseFloat(vacasSecas)) / parseFloat(superficieVT)).toFixed(2);
-    let produccionIndividual = ((parseFloat(lecheVendida) / 365) / parseFloat(vacasOrdeno)).toFixed(1);
+    let produccionIndividual = ((parseFloat(lecheTotal) / 365) / parseFloat(vacasOrdeno)).toFixed(1);
     let relacionVOVT = ((parseFloat(vacasOrdeno) / (parseFloat(vacasOrdeno) + parseFloat(vacasSecas)) * 100)).toFixed(1);
-    let productividad = (parseFloat(lecheVendida) / parseFloat(superficieVT)).toFixed(0);
+    let productividad = (parseFloat(lecheTotal) / parseFloat(superficieVT)).toFixed(0);
     let gastosLitro = (parseFloat(gastosDirectosLitro) + parseFloat(gastosEstructuraLitro)).toFixed(3);
     let variacionRodeoP = (parseFloat(porcentajeReposicion) - parseFloat(bajaVacasP)).toFixed(1);
 
@@ -609,6 +614,20 @@ function ReportePDF(props) {
                     <View style={styles.table}>
                         <View style={styles.tableRow}>
                             <View style={styles.tableCell}>
+                                <Text>Leche producida anual</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>{new Intl.NumberFormat().format(lecheTotal)} litros/año</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>Producción diaria de leche</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>{new Intl.NumberFormat().format(lecheTotalDia)} litros/día</Text>
+                            </View>
+                        </View>
+                        <View style={styles.tableRow}>
+                            <View style={styles.tableCell}>
                                 <Text>Leche vendida anual</Text>
                             </View>
                             <View style={styles.tableCell}>
@@ -619,6 +638,20 @@ function ReportePDF(props) {
                             </View>
                             <View style={styles.tableCell}>
                                 <Text>{new Intl.NumberFormat().format(lecheVendidaDia)} litros/día</Text>
+                            </View>
+                        </View>
+                        <View style={styles.tableRow}>
+                            <View style={styles.tableCell}>
+                                <Text>Leche no comercial anual</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>{new Intl.NumberFormat().format(lecheNoComercial)} litros/año</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>Leche no comercial diaria</Text>
+                            </View>
+                            <View style={styles.tableCell}>
+                                <Text>{new Intl.NumberFormat().format(lecheNoComercialDia)} litros/día</Text>
                             </View>
                         </View>
                         <View style={styles.tableRow}>
@@ -1157,7 +1190,7 @@ function ReportePDF(props) {
                 <View style={styles.table}>
                     <View style={styles.tableRow}>
                         <View style={styles.tableCell2}>
-                            <Text>GASTOS (Análisis por litro)</Text>
+                            <Text>GASTOS (Análisis por litro comercializado)</Text>
                         </View>
                     </View>
                     <View style={styles.tableRow}>
@@ -1188,7 +1221,7 @@ function ReportePDF(props) {
                 <View style={styles.table}>
                     <View style={styles.tableRow}>
                         <View style={styles.tableCell2}>
-                            <Text>COSTO DE PRODUCCIÓN DE CORTO PLAZO (Análisis por litro)</Text>
+                            <Text>COSTO DE PRODUCCIÓN DE CORTO PLAZO (Análisis por litro comercializado)</Text>
                         </View>
                     </View>
                     <View style={styles.tableRow}>
@@ -1236,7 +1269,7 @@ function ReportePDF(props) {
                 <View style={styles.table}>
                     <View style={styles.tableRow}>
                         <View style={styles.tableCell2}>
-                            <Text>RESULTADO OPERATIVO (Análisis por litro)</Text>
+                            <Text>RESULTADO OPERATIVO (Análisis por litro comercializado)</Text>
                         </View>
                     </View>
                     <View style={styles.tableRow}>

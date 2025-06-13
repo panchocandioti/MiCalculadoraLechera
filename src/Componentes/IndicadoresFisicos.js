@@ -15,6 +15,11 @@ function IndicadoresFisicos(props) {
                 <table className="table table-hover">
                     <tbody>
                         <tr>
+                            <td>PRODUCCIÓN DIARIA DE LECHE</td>
+                            <td>{new Intl.NumberFormat().format(props.lecheTotalDia)}</td>
+                            <td>litros/día</td>
+                        </tr>
+                        <tr>
                             <td>ENTREGA DIARIA DE LECHE</td>
                             <td>{new Intl.NumberFormat().format(props.lecheVendidaDia)}</td>
                             <td>litros/día</td>
